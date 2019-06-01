@@ -32,6 +32,7 @@ mkdir -p data/wwwroot
 mkdir -p data/mysql
 touch data/mysql/.gitignore
 
+mkdir -p data/redis
 mkdir -p logs
 
 mkdir -p services/nginx
