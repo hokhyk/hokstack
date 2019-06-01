@@ -7,9 +7,8 @@ services:
           context: ./nginx
           dockerfile: nginx.dockerfile      
         volumes:
-        # mounted for static resources/frontend under frontend/backend separated deployment.
           - ../data/wwwroot:/data/www:rw
-          - ../logs/nginx:/var/log/nginx
+          - ../logs:/var/log/nginx
           - ./nginx/conf/vhost:/etc/nginx/conf.d
           - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
         networks:
@@ -69,6 +68,7 @@ services:
               - mysql
     
     phpmyadmin:
+      container_name:phpmyadmin
       build:
         context: ./phpmyadmin
         dockerfile: phpmyadmin.dockerfile
@@ -112,6 +112,5 @@ services:
           aliases:
             - redis
       restart: always
-
 networks:
   devnet:
