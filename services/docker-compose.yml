@@ -7,10 +7,10 @@ services:
         context: ./nginx
         dockerfile: nginx.dockerfile      
       volumes: 
-        - ../data/wwwroot:/data/www:rw
+        - ../data/wwwroot:/data/www
         - ../logs:/var/log/nginx
         - ./nginx/conf/vhost:/etc/nginx/conf.d
-        - ./nginx/nginx.conf:/etc/nginx/nginx.conf: ro
+        - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       networks:
         - devnet
       ports:
@@ -100,7 +100,7 @@ services:
     redis:
       container_name: redis-server
       build:
-        context: ./
+        context: ./redis
         dockerfile: redis.dockerfile
       ports:
         - "6379:6379"
@@ -113,3 +113,10 @@ services:
       restart: always
 networks:
   devnet:
+# volumes:
+#   wwwroot:
+#     driver: local
+#     driver_opts:
+#       type: none
+#       device: $PWD/${WWWROOT_PATH}
+#       o: bind
