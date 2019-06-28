@@ -36,10 +36,10 @@ services:
         - "DB_PORT=3306"
         - "DB_HOST=database"
       volumes:
-        - ../data/wwwroot:/data/www:rw
-        - ./php/conf/php.ini:/usr/local/etc/php/php.ini:ro
-        - ./php/conf/php-fpm.conf:/usr/local/etc/php-fpm.conf:ro
-        - ../logs:/var/log/php-fpm:rw
+        - ../data/wwwroot:/data/www
+        - ./php/conf/php.ini:/usr/local/etc/php/php.ini
+        - ./php/conf/php-fpm.conf:/usr/local/etc/php-fpm.conf
+        - ../logs:/var/log/php-fpm
       restart: always
       command: php-fpm
 
@@ -52,9 +52,9 @@ services:
       command: --default-authentication-plugin=mysql_native_password
       restart: always
       volumes:
-        - ../data/mysql:/var/lib/mysql:rw
-        - ../logs/:/var/lib/mysql-logs:rw
-        - ./mysql/conf:/etc/mysql/conf.d:ro
+        - ../data/mysql:/var/lib/mysql
+        - ../logs/:/var/lib/mysql-logs
+        - ./mysql/conf:/etc/mysql/conf.d
       environment:
         - "MYSQL_DATABASE=homestead"
         - "MYSQL_USER=homestead"
